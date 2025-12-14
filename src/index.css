@@ -138,7 +138,6 @@ ul {
 
 /* Navbar */
 .nav-pill {
-  position: sticky;
   top: var(--spacing-md);
   z-index: 100;
   background: #EBE8E0; /* Slightly darker beige for contrast */
