@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Mail, Twitter, Code, Cpu, Globe, Database, ArrowUpRight, Terminal, Headphones } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter, Code, ArrowUpRight, Headphones } from 'lucide-react';
 
 const Home = () => {
     return (
@@ -16,10 +16,10 @@ const Home = () => {
                 <h1 className="text-display text-huge" style={{ marginBottom: '1.5rem' }}>
                     Hi, I'm <span style={{ color: 'var(--color-accent-orange)' }}>Harsh</span>.
                     <br />
-                    I build <span style={{ opacity: 0.6 }}>interactive web experiences.</span>
+                    I build <span style={{ opacity: 0.6 }}>things that actually work.</span>
                 </h1>
                 <p className="text-body" style={{ maxWidth: '80%', marginBottom: '2rem' }}>
-                    Full-stack developer passionate about creating beautiful, functional, and user-centered digital products.
+                    Backend-leaning full-stack developer. I like building real tools — web apps, APIs, CLI utilities, and side projects that go too far.
                 </p>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                     <Link to="/projects" className="btn-pill btn-primary">View Projects <ArrowUpRight size={18} style={{ marginLeft: '8px' }} /></Link>
@@ -27,7 +27,7 @@ const Home = () => {
                 </div>
             </motion.div>
 
-            {/* Stats/Experience Card - Spans 4 columns */}
+            {/* Currently Building Card - Spans 4 columns */}
             <motion.div
                 className="bento-card"
                 style={{ gridColumn: 'span 4', background: 'white' }}
@@ -36,28 +36,17 @@ const Home = () => {
                 transition={{ delay: 0.2 }}
             >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <div>
-                        <h3 className="text-display text-large">20+</h3>
-                        <p className="text-body" style={{ fontSize: '0.9rem' }}>Repositories</p>
-                    </div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.5 }}>Currently Building</span>
                     <div style={{
-                        width: '40px', height: '40px',
-                        borderRadius: '50%', border: '1px solid black',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        background: 'var(--color-accent-yellow)'
-                    }}>
-                        <Terminal size={20} />
-                    </div>
+                        width: '10px', height: '10px',
+                        borderRadius: '50%',
+                        background: '#22c55e',
+                        boxShadow: '0 0 0 3px rgba(34,197,94,0.25)'
+                    }} />
                 </div>
-                {/* Decorative visual - GitHub Contribution Graph style */}
-                <div style={{ marginTop: '2rem', display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                    {Array.from({ length: 28 }).map((_, i) => (
-                        <div key={i} style={{
-                            width: '12px', height: '12px', borderRadius: '2px',
-                            background: Math.random() > 0.5 ? 'var(--color-accent-orange)' : '#eee',
-                            opacity: Math.random() > 0.3 ? 1 : 0.3
-                        }}></div>
-                    ))}
+                <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
+                    <h3 className="text-display text-large" style={{ marginBottom: '0.4rem' }}>Siren</h3>
+                    <p className="text-body" style={{ fontSize: '0.9rem', opacity: 0.7 }}>Real-time audio translation with voice cloning and emotion preservation.</p>
                 </div>
             </motion.div>
 
@@ -73,11 +62,16 @@ const Home = () => {
                     <h4 className="text-display">Tech Stack</h4>
                     <Code size={20} />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginTop: 'auto' }}>
-                    <div style={{ textAlign: 'center' }}><Globe size={24} /><div style={{ fontSize: '0.7rem', marginTop: '4px' }}>Web</div></div>
-                    <div style={{ textAlign: 'center' }}><Database size={24} /><div style={{ fontSize: '0.7rem', marginTop: '4px' }}>Data</div></div>
-                    <div style={{ textAlign: 'center' }}><Cpu size={24} /><div style={{ fontSize: '0.7rem', marginTop: '4px' }}>API</div></div>
-                    <div style={{ textAlign: 'center' }}><Terminal size={24} /><div style={{ fontSize: '0.7rem', marginTop: '4px' }}>Dev</div></div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.75rem', marginTop: 'auto' }}>
+                    {['Python', 'FastAPI', 'JavaScript', 'Go', 'React'].map((tech) => (
+                        <div key={tech} style={{ textAlign: 'center' }}>
+                            <div style={{
+                                fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.04em',
+                                padding: '6px 4px', borderRadius: '6px',
+                                border: '1px solid rgba(0,0,0,0.15)', background: 'rgba(255,255,255,0.6)'
+                            }}>{tech}</div>
+                        </div>
+                    ))}
                 </div>
             </motion.div>
 
@@ -94,8 +88,8 @@ const Home = () => {
                     <Headphones size={18} />
                 </div>
                 <div style={{ marginTop: 'auto' }}>
-                    <h4 className="text-display" style={{ fontSize: '1.5rem' }}>VoiceReader</h4>
-                    <p style={{ opacity: 0.9, fontSize: '0.9rem' }}>In-browser EPUB reader with read-aloud support.</p>
+                    <h4 className="text-display" style={{ fontSize: '1.5rem' }}>Siren</h4>
+                    <p style={{ opacity: 0.9, fontSize: '0.9rem' }}>Real-time speech translation that clones the speaker's voice and preserves emotion.</p>
                 </div>
             </motion.div>
 
@@ -116,13 +110,13 @@ const Home = () => {
                     <a href="https://github.com/dragoon4890" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
                         <Github size={20} />
                     </a>
-                    <a href="#" aria-label="LinkedIn" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
+                    <a href="https://linkedin.com/in/harshsks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
                         <Linkedin size={20} />
                     </a>
-                    <a href="#" aria-label="Twitter" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
+                    <a href="https://x.com/harshsks789" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
                         <Twitter size={20} />
                     </a>
-                    <a href="mailto:hello@example.com" aria-label="Email" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black', background: 'var(--color-accent-dark)', color: 'white' }}>
+                    <a href="mailto:harshsks123@gmail.com" aria-label="Email" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black', background: 'var(--color-accent-dark)', color: 'white' }}>
                         <Mail size={20} />
                     </a>
                 </div>
