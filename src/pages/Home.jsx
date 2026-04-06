@@ -45,8 +45,8 @@ const Home = () => {
                     }} />
                 </div>
                 <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
-                    <h3 className="text-display text-large" style={{ marginBottom: '0.4rem' }}>Siren</h3>
-                    <p className="text-body" style={{ fontSize: '0.9rem', opacity: 0.7 }}>Real-time audio translation with voice cloning and emotion preservation.</p>
+                    <h3 className="text-display text-large" style={{ marginBottom: '0.4rem' }}>MapBattle</h3>
+                    <p className="text-body" style={{ fontSize: '0.9rem', opacity: 0.7 }}>GeoGuessr style party game where you have to guess from picture of a shared memory</p>
                 </div>
             </motion.div>
 
