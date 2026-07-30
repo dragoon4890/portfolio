@@ -13,17 +13,26 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
             >
-                <h1 className="text-display text-huge" style={{ marginBottom: '1.5rem' }}>
+                <h1 className="text-display text-huge" style={{ marginBottom: '1.2rem' }}>
                     Hi, I'm <span style={{ color: 'var(--color-accent-orange)' }}>Harsh</span>.
-                    <br />
-                    I build <span style={{ opacity: 0.6 }}>things that actually work.</span>
                 </h1>
+                <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--border-radius-pill)', border: '1px solid #1a1a1a', background: '#1a1a1a', color: '#fff' }}>
+                        interests
+                    </span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--border-radius-pill)', border: '1px solid rgba(0,0,0,0.15)', background: '#fff' }}>
+                        @ML
+                    </span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--border-radius-pill)', border: '1px solid rgba(0,0,0,0.15)', background: '#fff' }}>
+                        @backend
+                    </span>
+                </div>
                 <p className="text-body" style={{ maxWidth: '80%', marginBottom: '2rem' }}>
-                    Backend-leaning full-stack developer. I like building real tools — web apps, APIs, CLI utilities, and side projects that go too far.
+                    Building real-time systems, ML workflows, and backend infrastructure.
                 </p>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                     <Link to="/projects" className="btn-pill btn-primary">View Projects <ArrowUpRight size={18} style={{ marginLeft: '8px' }} /></Link>
-                    <button className="btn-pill btn-secondary">Contact Me</button>
+                    <a href="mailto:harshsks123@gmail.com" className="btn-pill btn-secondary">Contact Me</a>
                 </div>
             </motion.div>
 
