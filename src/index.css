@@ -78,6 +78,12 @@ ul {
   padding: var(--spacing-md);
 }
 
+.page-content {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+}
+
 /* Bento Grid System */
 .bento-grid {
   display: grid;
@@ -264,6 +270,7 @@ ul {
 
 .blog-post {
   max-width: 720px;
+  margin: 0 auto;
 }
 
 .blog-post-header {
