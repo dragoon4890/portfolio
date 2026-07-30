@@ -88,7 +88,7 @@ const BlogPost = () => {
 
                 <div className="blog-post-content">
                     <ReactMarkdown
-                        transformImageUri={(src) =>
+                        urlTransform={(src) =>
                             src.startsWith('http') ? src : `${BASE_URL}/posts/${src}`
                         }
                     >
