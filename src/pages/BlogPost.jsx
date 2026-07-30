@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { fetchPost } from '../services/blogService';
+import { fetchPost, BASE_URL } from '../services/blogService';
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -87,7 +87,11 @@ const BlogPost = () => {
                 </header>
 
                 <div className="blog-post-content">
-                    <ReactMarkdown>
+                    <ReactMarkdown
+                        transformImageUri={(src) =>
+                            src.startsWith('http') ? src : `${BASE_URL}/posts/${src}`
+                        }
+                    >
                         {post.content}
                     </ReactMarkdown>
                 </div>

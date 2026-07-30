@@ -4,7 +4,7 @@ const GITHUB_USER = 'dragoon4890';
 const BLOG_REPO = 'blogs';
 const BRANCH = 'main';
 
-const BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${BLOG_REPO}/${BRANCH}`;
+export const BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${BLOG_REPO}/${BRANCH}`;
 
 /**
  * Fetches the posts index (posts.json) from the blogs repository
