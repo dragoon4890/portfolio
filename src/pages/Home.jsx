@@ -1,135 +1,160 @@
-import { motion } from 'framer-motion';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Mail, Twitter, Code, ArrowUpRight, Headphones } from 'lucide-react';
 
 const Home = () => {
+    const [copied, setCopied] = useState(false);
+
+    const cliContent = `$> whoami\nharsh\n\n$> ls projects/\nSiren   StatusLog   RayTracing   BallFight\n\n$> echo "from scratch"\nfrom scratch`;
+
+    const handleCopy = useCallback(() => {
+        navigator.clipboard.writeText(cliContent).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    }, [cliContent]);
+
     return (
-        <div className="bento-grid">
-            {/* Hero Section - Spans 8 columns */}
-            <motion.div
-                className="bento-card"
-                style={{ gridColumn: 'span 8', gridRow: 'span 2', justifyContent: 'center' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-            >
-                <h1 className="text-display text-huge" style={{ marginBottom: '1.2rem' }}>
-                    Hi, I'm <span style={{ color: 'var(--color-accent-orange)' }}>Harsh</span>.
-                </h1>
-                <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '0.85rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--border-radius-pill)', border: '1px solid #1a1a1a', background: '#1a1a1a', color: '#fff' }}>
-                        interests
-                    </span>
-                    <span style={{ fontSize: '0.85rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--border-radius-pill)', border: '1px solid rgba(0,0,0,0.15)', background: '#fff' }}>
-                        @ML
-                    </span>
-                    <span style={{ fontSize: '0.85rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--border-radius-pill)', border: '1px solid rgba(0,0,0,0.15)', background: '#fff' }}>
-                        @backend
-                    </span>
-                </div>
-                <p className="text-body" style={{ maxWidth: '80%', marginBottom: '2rem' }}>
-                    Building real-time systems, ML workflows, and backend infrastructure.
-                </p>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                    <Link to="/projects" className="btn-pill btn-primary">View Projects <ArrowUpRight size={18} style={{ marginLeft: '8px' }} /></Link>
-                    <a href="mailto:harshsks123@gmail.com" className="btn-pill btn-secondary">Contact Me</a>
-                </div>
-            </motion.div>
+        <div>
+            <span className="fig-label">FIG_000 — Hero Configuration</span>
 
-            {/* Currently Building Card - Spans 4 columns */}
-            <motion.div
-                className="bento-card"
-                style={{ gridColumn: 'span 4', background: 'white' }}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-            >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.5 }}>Currently Building</span>
-                    <div style={{
-                        width: '10px', height: '10px',
-                        borderRadius: '50%',
-                        background: '#22c55e',
-                        boxShadow: '0 0 0 3px rgba(34,197,94,0.25)'
-                    }} />
-                </div>
-                <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
-                    <h3 className="text-display text-large" style={{ marginBottom: '0.4rem' }}>MapBattle</h3>
-                    <p className="text-body" style={{ fontSize: '0.9rem', opacity: 0.7 }}>GeoGuessr style party game where you have to guess from picture of a shared memory</p>
-                </div>
-            </motion.div>
+            <div className="hero-grid">
+                <div className="hero-left">
+                    <div className="text-pixel text-xl-head" style={{ marginBottom: '0.5rem', color: 'var(--color-accent)' }}>
+                        HI, I&apos;M HARSH.
+                    </div>
 
-            {/* Tech Stack Card - Spans 4 columns */}
-            <motion.div
-                className="bento-card"
-                style={{ gridColumn: 'span 4', background: '#EAE6DD' }}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-            >
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                    <h4 className="text-display">Tech Stack</h4>
-                    <Code size={20} />
+                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
+                        <span className="brutal-tag">interests</span>
+                        <span className="brutal-tag">@ml</span>
+                        <span className="brutal-tag">@backend</span>
+                    </div>
+
+                    <p className="text-body-serif" style={{ fontSize: '1rem' }}>
+                        Building real-time systems, ML workflows, and backend infrastructure. From scratch.
+                    </p>
+
+                    <div style={{ display: 'flex', gap: '0', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                        <Link to="/projects" className="brutal-btn primary">
+                            View Projects <span className="text-pixel" style={{ fontSize: '0.5rem' }}>&rarr;</span>
+                        </Link>
+                        <a href="mailto:harshsks123@gmail.com" className="brutal-btn secondary">Contact</a>
+                    </div>
+
+                    <div style={{ marginTop: '1rem', borderTop: '1px solid #000', paddingTop: '0.75rem' }}>
+                        <span className="text-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.6 }}>
+                            Plate 1 of 3
+                        </span>
+                    </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.75rem', marginTop: 'auto' }}>
-                    {['Python', 'FastAPI', 'JavaScript', 'Go', 'React'].map((tech) => (
-                        <div key={tech} style={{ textAlign: 'center' }}>
-                            <div style={{
-                                fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.04em',
-                                padding: '6px 4px', borderRadius: '6px',
-                                border: '1px solid rgba(0,0,0,0.15)', background: 'rgba(255,255,255,0.6)'
-                            }}>{tech}</div>
+
+                <div className="hero-right brutal-card" style={{ padding: 0 }}>
+                    <div className="terminal-window" style={{ border: 'none' }}>
+                        <div className="terminal-titlebar">
+                            <span className="terminal-dot red"></span>
+                            <span className="terminal-dot yellow"></span>
+                            <span className="terminal-dot green"></span>
+                            <span className="text-mono" style={{ fontSize: '0.6rem', color: '#888', marginLeft: '8px', letterSpacing: '0.1em' }}>main →</span>
                         </div>
-                    ))}
+                        <div className="terminal-body">
+                            <div className="terminal-line">
+                                <span className="terminal-prompt">$&gt; </span><span className="terminal-cmd">whoami</span>
+                            </div>
+                            <div className="terminal-line terminal-output">harsh</div>
+                            <div className="terminal-line">&nbsp;</div>
+                            <div className="terminal-line">
+                                <span className="terminal-prompt">$&gt; </span><span className="terminal-cmd">ls projects/</span>
+                            </div>
+                            <div className="terminal-line terminal-output">Siren&nbsp;&nbsp;&nbsp;StatusLog&nbsp;&nbsp;RayTracing&nbsp;&nbsp;BallFight</div>
+                            <div className="terminal-line">&nbsp;</div>
+                            <div className="terminal-line">
+                                <span className="terminal-prompt">$&gt; </span><span className="terminal-cmd">echo "from scratch"</span>
+                            </div>
+                            <div className="terminal-line terminal-output">from scratch</div>
+                            <div className="terminal-line">&nbsp;</div>
+                            <div className="terminal-line">
+                                <span className="terminal-cursor"></span>
+                            </div>
+                            <button className={`copy-btn ${copied ? 'copied' : ''}`} onClick={handleCopy}>
+                                {copied ? 'Copied' : 'Copy'}
+                            </button>
+                        </div>
+                    </div>
+                    <span className="plate-label" style={{ borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: 'none', borderRight: 'none' }}>Plate 2 of 3</span>
                 </div>
-            </motion.div>
+            </div>
 
-            {/* Current Focus Card - Spans 4 columns */}
-            <motion.div
-                className="bento-card"
-                style={{ gridColumn: 'span 4', background: 'var(--color-accent-orange)', color: 'white' }}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4 }}
-            >
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
-                    <span style={{ fontSize: '0.8rem', border: '1px solid white', padding: '2px 8px', borderRadius: '12px' }}>Current Focus</span>
-                    <Headphones size={18} />
-                </div>
-                <div style={{ marginTop: 'auto' }}>
-                    <h4 className="text-display" style={{ fontSize: '1.5rem' }}>Siren</h4>
-                    <p style={{ opacity: 0.9, fontSize: '0.9rem' }}>Real-time speech translation that clones the speaker's voice and preserves emotion.</p>
-                </div>
-            </motion.div>
+            <span className="fig-label" style={{ marginTop: '2rem' }}>FIG_002 — System Modules</span>
 
-            {/* Connect Card - Spans 8 columns */}
-            <motion.div
-                className="bento-card"
-                style={{ gridColumn: 'span 8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-            >
-                <div>
-                    <h3 className="text-display text-large">Let's Connect</h3>
-                    <p className="text-body">Open for collaborations and opportunities.</p>
+            <div className="hero-grid" style={{ marginTop: '1.5rem' }}>
+                <div className="brutal-card" style={{ borderRight: '1px solid #000' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <span className="text-mono" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Currently Building</span>
+                        <span className="live-dot"></span>
+                    </div>
+                    <h3 className="text-mono" style={{ fontSize: '1rem', letterSpacing: '0.04em', marginBottom: '0.5rem' }}>MapBattle</h3>
+                    <p className="text-body-serif" style={{ fontSize: '0.85rem', opacity: 0.8 }}>
+                        GeoGuessr style party game where you have to guess from picture of a shared memory
+                    </p>
+                    <span className="plate-label" style={{ marginTop: '1rem' }}>Plate 3 of 3</span>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                    <a href="https://github.com/dragoon4890" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
-                        <Github size={20} />
-                    </a>
-                    <a href="https://linkedin.com/in/harshsks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
-                        <Linkedin size={20} />
-                    </a>
-                    <a href="https://x.com/harshsks789" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black' }}>
-                        <Twitter size={20} />
-                    </a>
-                    <a href="mailto:harshsks123@gmail.com" aria-label="Email" className="btn-pill" style={{ width: '50px', height: '50px', padding: 0, borderRadius: '50%', border: '1px solid black', background: 'var(--color-accent-dark)', color: 'white' }}>
-                        <Mail size={20} />
-                    </a>
+                <div className="brutal-card">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <span className="text-mono" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Tech Stack</span>
+                        <span className="text-mono" style={{ fontSize: '0.7rem' }}>//</span>
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                        {['Python', 'FastAPI', 'JavaScript', 'Go', 'React'].map(tech => (
+                            <span key={tech} className="brutal-tag" style={{ marginBottom: '0.4rem' }}>{tech}</span>
+                        ))}
+                    </div>
                 </div>
-            </motion.div>
+            </div>
+
+            <div className="hero-grid" style={{ marginTop: '1.5rem' }}>
+                <div className="brutal-card" style={{ borderRight: '1px solid #000' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <span className="text-mono" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Current Focus</span>
+                        <span className="text-mono" style={{ fontSize: '0.7rem' }}>//</span>
+                    </div>
+                    <h3 className="text-mono" style={{ fontSize: '1rem', letterSpacing: '0.04em', marginBottom: '0.5rem' }}>Siren</h3>
+                    <p className="text-body-serif" style={{ fontSize: '0.85rem', opacity: 0.9 }}>
+                        Real-time speech translation that clones the speaker&apos;s voice and preserves emotion.
+                    </p>
+                </div>
+
+                <div className="brutal-card">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <span className="text-mono" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Connect</span>
+                        <span className="text-mono" style={{ fontSize: '0.7rem' }}>//</span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '0', marginTop: '0.5rem' }}>
+                        {['github', 'linkedin', 'twitter', 'mail'].map((social, i) => (
+                            <a
+                                key={social}
+                                href={social === 'mail' ? 'mailto:harshsks123@gmail.com' : `https://${social}.com/harshsks`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="brutal-btn"
+                                style={{
+                                    borderRight: i < 3 ? '1px solid #000' : 'none',
+                                    borderTop: '1px solid #000',
+                                    borderBottom: '1px solid #000',
+                                    borderLeft: i === 0 ? '1px solid #000' : 'none',
+                                    borderRadius: 0,
+                                    background: i === 3 ? 'var(--color-text)' : 'var(--color-surface)',
+                                    color: i === 3 ? 'var(--color-surface)' : 'var(--color-text)',
+                                    fontSize: '0.6rem',
+                                    padding: '0.5rem 0.75rem',
+                                    textTransform: 'uppercase',
+                                }}
+                            >
+                                {social}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
